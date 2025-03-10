@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>河南省教育厅</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "SimHei", sans-serif;
+        }
+        body {
+            background: url('https://i.pinimg.com/1200x/e6/71/8f/e6718f42cd8d54882c0768b9f6662914.jpg') no-repeat center top;
+            background-size: cover;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 25px;
+            text-align: center;
+            width: 100%;
+            max-width: 520px;
+            position: relative;
+        }
+        .title-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            position: relative;
+            margin-bottom: 5px;
+        }
+        .emblem {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 50%;
+            margin-left: -135px;
+        }
+        .main-title {
+            font-family: "SimSun", serif;
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+        .sub-title {
+            font-size: 18px;
+            margin: 3px 0;
+            color: white;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        .minor-title {
+            font-size: 16px;
+            margin-top: 10px;
+            color: white;
+            font-weight: 400;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        .form-container {
+            width: 100%;
+            max-width: 520px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            padding: 18px;
+            border-top: 4px solid #0066cc;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        input[type="text"]:focus {
+            border-color: #0066cc;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 102, 204, 0.3);
+        }
+        .error-message {
+            color: #ff3333;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .query-button {
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 35px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .query-button:hover {
+            background-color: #0052a3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .query-button:active {
+            transform: translateY(0);
+            background-color: #00448a;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        .form-inner {
+            background-color: #f8f9ff;
+            border: 1px solid #e0e6f5;
+            border-radius: 8px;
+            padding: 18px;
+            position: relative;
+        }
+        .form-inner::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 15px;
+            right: 15px;
+            height: 3px;
+            background: linear-gradient(to right, #0066cc, #4d94ff, #0066cc);
+            border-radius: 3px 3px 0 0;
+        }
+        .form-header {
+            border-bottom: 1px solid #e0e6f5;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            color: #0066cc;
+        }
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #555;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="title-container">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/National_Emblem_of_the_People%27s_Republic_of_China_2021.png" alt="国徽" class="emblem">
+            <h1 class="main-title">河南省教育厅</h1>
+        </div>
+        <h2 class="sub-title">职业教育与成人教育</h2>
+        <h3 class="minor-title">毕业生信息查询</h3>
+    </div>
+    <div class="form-container">
+        <div class="form-inner">
+            <div class="form-header">
+                <h4>请填写查询信息</h4>
+            </div>
+            <div class="form-group">
+                <label for="name">学生姓名：</label>
+                <input type="text" id="name" placeholder="请输入姓名">
+            </div>
+            <div class="form-group">
+                <label for="id-number">身份证号：</label>
+                <input type="text" id="id-number" placeholder="请输入身份证号">
+                <p class="error-message" id="error-message">请重新输入</p>
+            </div>
+            <div class="form-group">
+                <label for="certificate">毕业证书编号：</label>
+                <input type="text" id="certificate" placeholder="请输入毕业证书编号">
+            </div>
+            <div class="button-container">
+                <button class="query-button" id="query-btn">学籍查询</button>
+            </div>
+        </div>
+    </div>
+    <footer>
+        &copy; 2025 河南省教育厅 版权所有 豫ICP备0911211号
+    </footer>
+    <script>
+        document.getElementById('query-btn').addEventListener('click', function() {
+            const idNumber = document.getElementById('id-number').value;
+            const certificateNumber = document.getElementById('certificate').value;
+            const errorMessage = document.getElementById('error-message');
+            if (idNumber === '410102198810170177') {
+                window.location.href = 'https://beiwaionline.github.io/graduate/';
+            } else {
+                // 清空身份证号和证书编号
+                document.getElementById('id-number').value = '';
+                document.getElementById('certificate').value = '';
+                // 显示错误信息
+                errorMessage.style.display = 'block';
+                // 3秒后隐藏错误信息
+                setTimeout(function() {
+                    errorMessage.style.display = 'none';
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>
+
