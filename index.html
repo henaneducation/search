@@ -12,7 +12,7 @@
             font-family: "SimHei", sans-serif;
         }
         body {
-            background: url('https://github.com/user-attachments/assets/fb7187e0-5f71-4c2d-8a09-c1608167548b') no-repeat center top;
+            background: url('https://github.com/user-attachments/assets/16464ffb-6b8f-4bdc-9763-bfc58e161dac') no-repeat center top;
             background-size: cover;
             background-attachment: fixed;
             display: flex;
@@ -64,9 +64,8 @@
         .minor-title {
             font-size: 16px;
             margin-top: 10px;
-            color: white;
+            color: #0066cc;
             font-weight: 400;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
         }
         .form-container {
             width: 100%;
@@ -161,44 +160,104 @@
             color: #555;
             font-size: 12px;
         }
+        /* 加载动画样式 */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+        }
+        #loading-text {
+            color: #666;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #0066cc;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        #main-content {
+            display: none;
+        }
     </style>
 </head>
 <body>
-    <div class="header">
-        <div class="title-container">
-            <img src="https://github.com/user-attachments/assets/a8231c1c-c367-474c-bb8f-948faf2d4e98" alt="国徽" class="emblem">
-            <h1 class="main-title">河南省教育厅</h1>
-        </div>
-        <h2 class="sub-title">职业教育与成人教育</h2>
-        <h3 class="minor-title">毕业生信息查询</h3>
+    <!-- 加载动画 -->
+    <div id="loading-screen">
+        <div class="loading-spinner"></div>
+        <p id="loading-text">正在连接...</p>
     </div>
-    <div class="form-container">
-        <div class="form-inner">
-            <div class="form-header">
-                <h4>请填写查询信息</h4>
+    <!-- 主内容 -->
+    <div id="main-content">
+        <div class="header">
+            <div class="title-container">
+                <img src="https://github.com/user-attachments/assets/a773fdad-00a4-4855-b980-d6b095d32923" alt="国徽" class="emblem">
+                <h1 class="main-title">河南省教育厅</h1>
             </div>
-            <div class="form-group">
-                <label for="name">学生姓名：</label>
-                <input type="text" id="name" placeholder="请输入姓名">
-            </div>
-            <div class="form-group">
-                <label for="id-number">身份证号：</label>
-                <input type="text" id="id-number" placeholder="请输入身份证号">
-                <p class="error-message" id="error-message">请重新输入</p>
-            </div>
-            <div class="form-group">
-                <label for="certificate">毕业证书编号：</label>
-                <input type="text" id="certificate" placeholder="请输入毕业证书编号">
-            </div>
-            <div class="button-container">
-                <button class="query-button" id="query-btn">学籍查询</button>
+            <h2 class="sub-title">职业教育与成人教育</h2>
+            <h3 class="minor-title">毕业生信息查询</h3>
+        </div>
+        <div class="form-container">
+            <div class="form-inner">
+                <div class="form-header">
+                    <h4>请填写查询信息</h4>
+                </div>
+                <div class="form-group">
+                    <label for="name">学生姓名：</label>
+                    <input type="text" id="name" placeholder="请输入姓名">
+                </div>
+                <div class="form-group">
+                    <label for="id-number">身份证号：</label>
+                    <input type="text" id="id-number" placeholder="请输入身份证号">
+                    <p class="error-message" id="error-message">请重新输入</p>
+                </div>
+                <div class="form-group">
+                    <label for="certificate">毕业证书编号：</label>
+                    <input type="text" id="certificate" placeholder="请输入毕业证书编号">
+                </div>
+                <div class="button-container">
+                    <button class="query-button" id="query-btn">学籍查询</button>
+                </div>
             </div>
         </div>
+        <footer>
+            &copy; 2025 河南省教育厅 版权所有 豫ICP备0911211号
+        </footer>
     </div>
-    <footer>
-        &copy; 2025 河南省教育厅 版权所有 豫ICP备0911211号
-    </footer>
     <script>
+        // 加载动画脚本
+        window.onload = function() {
+            const loadingScreen = document.getElementById('loading-screen');
+            const loadingText = document.getElementById('loading-text');
+            const mainContent = document.getElementById('main-content');
+            // 第一段动画：显示"正在连接..."5秒
+            setTimeout(function() {
+                loadingText.textContent = "连接到河南省教育厅...";
+                // 第二段动画：显示"连接到河南省教育厅..."8秒后显示主内容
+                setTimeout(function() {
+                    loadingScreen.style.display = 'none';
+                    mainContent.style.display = 'flex';
+                    mainContent.style.flexDirection = 'column';
+                    mainContent.style.alignItems = 'center';
+                }, 7000);
+            }, 8000);
+        };
+        // 查询按钮功能
         document.getElementById('query-btn').addEventListener('click', function() {
             const idNumber = document.getElementById('id-number').value;
             const certificateNumber = document.getElementById('certificate').value;
@@ -211,10 +270,10 @@
                 document.getElementById('certificate').value = '';
                 // 显示错误信息
                 errorMessage.style.display = 'block';
-                // 3秒后隐藏错误信息
+                // 4秒后隐藏错误信息
                 setTimeout(function() {
                     errorMessage.style.display = 'none';
-                }, 3000);
+                }, 4000);
             }
         });
     </script>
